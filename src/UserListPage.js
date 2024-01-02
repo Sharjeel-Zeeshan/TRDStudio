@@ -15,15 +15,15 @@ const UserListPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className='container'>
       <h1>User List</h1>
-      <ul>
+      <ol >
         {users.map(user => (
           <li key={user.id}>
             <Link to={`/user/${user.id}`}>{user.name}</Link>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };

@@ -7,14 +7,17 @@
 
 h1 {
   color: #333;
+ 
 }
 
 a {
   text-decoration: none;
   color: #007BFF;
   font-weight: bold;
+  background-color: aqua;
+  padding: 5px;
 }
 
 a:hover {
   color: #0056b3;
-}
+} 

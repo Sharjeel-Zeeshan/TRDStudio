@@ -16,10 +16,10 @@ const UserDetailsPage = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className='container'>
       <h1>User Details</h1>
       {user ? (
-        <div>
+        <div >
           <p>Name: {user.name}</p>
           <p>Email: {user.email}</p>
           
