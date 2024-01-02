@@ -1,20 +1,35 @@
+
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import UserDetails from './UserDetails';
+import { Link, useParams } from 'react-router-dom';
+import "./UserDetailpage.css"
 
 const UserDetailsPage = () => {
-  const { id } = useParams();
   const [user, setUser] = useState(null);
+  const { id } = useParams();
 
   useEffect(() => {
-    
+  
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then((response) => response.json())
-      .then((data) => setUser(data))
-
+      .then(response => response.json())
+      .then(data => setUser(data))
+     
   }, [id]);
 
-  return user ? <UserDetails user={user} /> : null;
+  return (
+    <div>
+      <h1>User Details</h1>
+      {user ? (
+        <div>
+          <p>Name: {user.name}</p>
+          <p>Email: {user.email}</p>
+          
+          <Link to="/" className="back">Back to User List</Link>
+        </div>
+      ) : (
+        <p>Loading user details...</p>
+      )}
+    </div>
+  );
 };
 
 export default UserDetailsPage;

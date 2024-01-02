@@ -1,35 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
 
-const UserDetailsPage = () => {
-  const { id } = useParams();
-  const [user, setUser] = useState(null);
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import "./UserListPage"
+
+const UserListPage = () => {
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-   
-    axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-    .then((response) => response.json())
-    .then((data) => setUser(data))
-     
-  }, [id]);
+    
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => setUsers(data))
+      
+  }, []);
 
   return (
     <div>
-      <h2>User Details</h2>
-      {user ? (
-        <div>
-          <p>Name: {user.name}</p>
-          <p>Email: {user.email}</p>
-          <p>Address : {user.address}</p>
-         
-        </div>
-      ) : (
-        <p>Loading user details...</p>
-      )}
-      <Link to="/">Back to User List</Link>
+      <h1>User List</h1>
+      <ul>
+        {users.map(user => (
+          <li key={user.id}>
+            <Link to={`/user/${user.id}`}>{user.name}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-export default UserDetailsPage;
+export default UserListPage;

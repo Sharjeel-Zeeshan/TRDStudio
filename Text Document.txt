@@ -1,0 +1,10 @@
+this file is to give brief information about my task to create a React application that displays a list of users and allows to click on a user to view their details.
+
+first i have created  a file name UserListPage.js,in which i have used fetch to fetch the data from Api and then used Promise .then and later render them using map function.
+second  i have created  a file name UserDetailPage.js,in which i have used fetch to fetch the data from Api and then used Promise .then and used conditional rendering to render basedd on condition provide as user.
+
+last i have used react-router-dom to navigate them and render in app.js.
+
+with css file used to create design.
+
+thanks
